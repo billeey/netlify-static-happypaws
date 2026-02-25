@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Services - HappyPaws</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-blue">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-white" href="index.html">
+      🐾 HappyPaws
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- services -->
+<section class="container mt-5">
+  <h1 class="text-center mb-4">Our Grooming Services</h1>
+
+  <div class="row">
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow h-100">
+        <div class="card-body text-center">
+          <h4>Basic Grooming</h4>
+          <p>Bath, blow dry, nail trimming, and ear cleaning.</p>
+          <h5 class="text-primary">Start from Rp 50.000</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow h-100">
+        <div class="card-body text-center">
+          <h4>Complete Grooming</h4>
+          <p>Full grooming including haircut and styling.</p>
+          <h5 class="text-success">Start from Rp 80.000</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow h-100">
+        <div class="card-body text-center">
+          <h4>Anti-Flea Treatment</h4>
+          <p>Special treatment to remove fleas and ticks.</p>
+          <h5 class="text-danger">Start from Rp 100.000</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- calculator -->
+<section class="container mt-5 mb-5">
+  <div class="card shadow">
+    <div class="card-header custom-blue text-white text-center">
+      <h3>🐾 Grooming Booking</h3>
+    </div>
+    <div class="card-body">
+
+      <form id="groomingForm">
+
+        <div class="mb-3">
+          <label class="form-label">Pet Name</label>
+          <input type="text" class="form-control" id="petName" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Pet Type</label>
+          <select class="form-select" id="petType" required>
+            <option value="">Choose...</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Pet Size</label>
+          <select class="form-select" id="petSize" required>
+            <option value="">Choose...</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Service Type</label>
+          <select class="form-select" id="serviceType" required>
+            <option value="">Choose...</option>
+            <option value="Basic">Basic Grooming</option>
+            <option value="Complete">Complete Grooming</option>
+            <option value="AntiFlea">Anti-Flea Treatment</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">WhatsApp Number</label>
+          <input type="text" class="form-control" id="whatsapp" placeholder="08xxxxxxxxxx" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Estimated Price (Rp)</label>
+          <input type="text" class="form-control" id="price" readonly>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-cream w-100">
+          Book Grooming
+        </button>
+      </form>
+      <div id="result" class="mt-4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="custom-blue text-white text-center p-3 mt-5">
+  <p>© 2026 HappyPaws Grooming | Billy Ananda</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const petSize = document.getElementById("petSize");
+  const serviceType = document.getElementById("serviceType");
+  const priceInput = document.getElementById("price");
+  const form = document.getElementById("groomingForm");
+  const result = document.getElementById("result");
+
+  function calculatePrice() {
+    const size = petSize.value;
+    const service = serviceType.value;
+
+    const prices = {
+      Basic: { Small: 50000, Medium: 70000, Large: 90000 },
+      Complete: { Small: 80000, Medium: 100000, Large: 130000 },
+      AntiFlea: { Small: 100000, Medium: 120000, Large: 150000 }
+    };
+
+    if (size && service) {
+      priceInput.value = prices[service][size];
+    }
+  }
+
+      petSize.addEventListener("change", calculatePrice);
+      serviceType.addEventListener("change", calculatePrice);
+
+      form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const petName = document.getElementById("petName").value;
+      const petType = document.getElementById("petType").value;
+      const size = petSize.value;
+      const service = serviceType.value;
+      const whatsapp = document.getElementById("whatsapp").value;
+      const price = priceInput.value;
+
+      // validasi
+      if (!petName || !petType || !size || !service || !whatsapp || !price) {
+        result.innerHTML = `
+          <div class="alert alert-danger">
+            Please complete all fields first!
+          </div>
+        `;
+        return;
+      }
+      // alert sukses
+      result.innerHTML = `
+        <div class="alert alert-success">
+          ✅ Booking Successful! <br><br>
+          Pet Name: <b>${petName}</b><br>
+          Pet Type: <b>${petType}</b><br>
+          Service: <b>${service}</b><br>
+          Total Price: <b>Rp ${price}</b><br><br>
+          We will contact you via WhatsApp: <b>${whatsapp}</b>
+        </div>
+      `;
+      form.reset();
+      priceInput.value = "";
+    });
+    </script>
+
+</body>
+</html>

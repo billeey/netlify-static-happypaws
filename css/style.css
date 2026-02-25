@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+.carousel-inner {
+  height: 400px;
+}
+
+.carousel-img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.img-wrapper {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.img-wrapper:hover .gallery-img {
+  transform: scale(1.1);
+}
+
+header {
+    background-color: #87CEEB;
+}
+
+footer {
+    background-color: #87CEEB;
+}
+
+.custom-blue {
+    background: linear-gradient(135deg, #87CEEB, #4facfe);
+}
+
+.custom-blue .nav-link,
+.custom-blue .navbar-brand {
+    color: white !important;
+}
+
+body {
+  background-color: #eaf6fb;
+}
+
+.btn-cream {
+    background-color: #F5E6CC;
+    color: #333;
+    border: none;
+  }
+
+.btn-cream:hover {
+    background-color: #EAD7B7;
+    color: #000;
+  }
